@@ -1,0 +1,82 @@
+{
+  "app_name": "simd",
+  "app_version": "61fa0fb6",
+  "genesis_time": "2024-11-07T15:06:38.571309Z",
+  "chain_id": "beacond-2061",
+  "initial_height": 1,
+  "app_hash": null,
+  "app_state": {
+    "beacon": {
+      "fork_version": "0x04000000",
+      "deposits": [
+        {
+          "pubkey": "0xb9af922d8b5c09e9f371e2652b20e6220cb18fe2d35c4fe4f2cb182393d59c1cdaa8f122d1d5eb84afe4226747b85125",
+          "credentials": "0x0100000000000000000000000000000000000000000000000000000000000000",
+          "amount": "0x773594000",
+          "signature": "0x90fe634c21c5f6e8d2d75e2e9c8dd3f00874470b0fb4715195642d5b8a91bb843c5b9ed45151ceb82c05d930b060e4670f526b0ee00ea1dff8b406171ffa8df4e701e0c66444963f02969acaf6a653c99135e340c9e7ade7935684cf054efead",
+          "index": 0
+        }
+      ],
+      "execution_payload_header": {
+        "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "feeRecipient": "0x0000000000000000000000000000000000000000",
+        "stateRoot": "0x62d21c1f70b2238ada4657710895ff195e1e5dcb7f7a5485a223313a5e5a62bf",
+        "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "prevRandao": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "blockNumber": "0x0",
+        "gasLimit": "0x2540BE400",
+        "gasUsed": "0x0",
+        "timestamp": "0x0",
+        "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "baseFeePerGas": "0x3b9aca00",
+        "blockHash": "0x6b02b3e79df035503cc4fe786e14e7c62447369084d39bb7eb9884ef754863f8",
+        "transactionsRoot": "0x94cf9be2024145c5ad7c8d893fc2292e4ebe207ea42350fc7cf3e8798ac34cd9",
+        "withdrawalsRoot": "0x792930bbd5baac43bcc798ee49aa8185ef76bb3b44ba62b91d86ae569e4bb535",
+        "blobGasUsed": "0x0",
+        "excessBlobGas": "0x0"
+      }
+    },
+    "runtime": {}
+  },
+  "consensus": {
+    "params": {
+      "block": {
+        "max_bytes": "104857600",
+        "max_gas": "10000000"
+      },
+      "evidence": {
+        "max_age_num_blocks": "100000",
+        "max_age_duration": "172800000000000",
+        "max_bytes": "104857600"
+      },
+      "validator": {
+        "pub_key_types": [
+          "bls12_381"
+        ]
+      },
+      "version": {
+        "app": "0"
+      },
+      "synchrony": {
+        "precision": "500000000",
+        "message_delay": "2000000000"
+      },
+      "feature": {
+        "vote_extensions_enable_height": "0",
+        "pbts_enable_height": "0"
+      }
+    },
+    "validators": [
+      {
+        "address": "7F0DE87D46277EA8A5E670F99D6C0603393073F0",
+        "pub_key": {
+          "type": "cometbft/PubKeyBls12_381",
+          "value": "ua+SLYtcCenzceJlKyDmIgyxj+LTXE/k8ssYI5PVnBzaqPEi0dXrhK/kImdHuFEl"
+        },
+        "power": "32000000000",
+        "name": "Rollkit Sequencer"
+      }
+    ]
+  }
+}

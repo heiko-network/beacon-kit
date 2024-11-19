@@ -181,7 +181,7 @@ type ExecutableDataDeneb struct {
 	ExtraData     []byte                         `json:"extraData"                    gencodec:"required" ssz-max:"32"`
 	BaseFeePerGas math.Wei                       `json:"baseFeePerGas" ssz-size:"32"  gencodec:"required"`
 	BlockHash     common.ExecutionHash           `json:"blockHash"     ssz-size:"32"  gencodec:"required"`
-	Transactions  [][]byte                       `json:"transactions"  ssz-size:"?,?" gencodec:"required" ssz-max:"1048576,1073741824"`
+	Transactions  [][]byte                       `json:"transactions"  ssz-size:"?,?" gencodec:"required" ssz-max:"419430400,1073741824"`
 	Withdrawals   []*engineprimitives.Withdrawal `json:"withdrawals"                                      ssz-max:"16"`
 	BlobGasUsed   math.U64                       `json:"blobGasUsed"`
 	ExcessBlobGas math.U64                       `json:"excessBlobGas"`

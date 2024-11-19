@@ -66,14 +66,14 @@ export CHAIN_SPEC="devnet"
 
 # Setup local node if overwrite is set to Yes, otherwise skip setup
 if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
-	rm -rf $HOMEDIR
-	./build/bin/beacond init $MONIKER \
-		--chain-id $CHAINID \
-		--home $HOMEDIR \
-		--consensus-key-algo $CONSENSUS_KEY_ALGO
-	./build/bin/beacond genesis add-premined-deposit --home $HOMEDIR
-	./build/bin/beacond genesis collect-premined-deposits --home $HOMEDIR 
-	./build/bin/beacond genesis execution-payload "$ETH_GENESIS" --home $HOMEDIR
+    rm -rf $HOMEDIR
+    ./build/bin/beacond init $MONIKER \
+        --chain-id $CHAINID \
+        --home $HOMEDIR \
+        --consensus-key-algo $CONSENSUS_KEY_ALGO
+    ./build/bin/beacond genesis add-premined-deposit --home $HOMEDIR
+    ./build/bin/beacond genesis collect-premined-deposits --home $HOMEDIR 
+    ./build/bin/beacond genesis execution-payload "$ETH_GENESIS" --home $HOMEDIR
 fi
 
 ADDRESS=$(jq -r '.address' $HOMEDIR/config/priv_validator_key.json)

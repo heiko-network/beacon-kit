@@ -30,7 +30,7 @@ func (e ExecutableDataDeneb) MarshalJSON() ([]byte, error) {
 		ExtraData     bytes.Bytes                    `json:"extraData"                    gencodec:"required" ssz-max:"32"`
 		BaseFeePerGas math.U256L                     `json:"baseFeePerGas" ssz-size:"32"  gencodec:"required"`
 		BlockHash     common.Hash                    `json:"blockHash"     ssz-size:"32"  gencodec:"required"`
-		Transactions  []bytes.Bytes                  `json:"transactions"  ssz-size:"?,?" gencodec:"required" ssz-max:"1048576,1073741824"`
+		Transactions  []bytes.Bytes                  `json:"transactions"  ssz-size:"?,?" gencodec:"required" ssz-max:"419430400,1073741824"`
 		Withdrawals   []*engineprimitives.Withdrawal `json:"withdrawals"                                      ssz-max:"16"`
 		BlobGasUsed   math.U64                       `json:"blobGasUsed"`
 		ExcessBlobGas math.U64                       `json:"excessBlobGas"`
@@ -77,7 +77,7 @@ func (e *ExecutableDataDeneb) UnmarshalJSON(input []byte) error {
 		ExtraData     *bytes.Bytes                   `json:"extraData"                    gencodec:"required" ssz-max:"32"`
 		BaseFeePerGas *math.U256L                    `json:"baseFeePerGas" ssz-size:"32"  gencodec:"required"`
 		BlockHash     *common.Hash                   `json:"blockHash"     ssz-size:"32"  gencodec:"required"`
-		Transactions  []bytes.Bytes                  `json:"transactions"  ssz-size:"?,?" gencodec:"required" ssz-max:"1048576,1073741824"`
+		Transactions  []bytes.Bytes                  `json:"transactions"  ssz-size:"?,?" gencodec:"required" ssz-max:"419430400,1073741824"`
 		Withdrawals   []*engineprimitives.Withdrawal `json:"withdrawals"                                      ssz-max:"16"`
 		BlobGasUsed   *math.U64                      `json:"blobGasUsed"`
 		ExcessBlobGas *math.U64                      `json:"excessBlobGas"`

@@ -87,8 +87,8 @@ func (e *ExecutableDataDeneb) MarshalSSZTo(buf []byte) (dst []byte, err error) {
 	dst = append(dst, e.ExtraData...)
 
 	// Field (13) 'Transactions'
-	if size := len(e.Transactions); size > 1048576 {
-		err = ssz.ErrListTooBigFn("ExecutableDataDeneb.Transactions", size, 1048576)
+	if size := len(e.Transactions); size > 419430400 {
+		err = ssz.ErrListTooBigFn("ExecutableDataDeneb.Transactions", size, 419430400)
 		return
 	}
 	{
@@ -210,7 +210,7 @@ func (e *ExecutableDataDeneb) UnmarshalSSZ(buf []byte) error {
 	// Field (13) 'Transactions'
 	{
 		buf = tail[o13:o14]
-		num, err := ssz.DecodeDynamicLength(buf, 1048576)
+		num, err := ssz.DecodeDynamicLength(buf, 419430400)
 		if err != nil {
 			return err
 		}
@@ -334,7 +334,7 @@ func (e *ExecutableDataDeneb) HashTreeRootWith(hh ssz.HashWalker) (err error) {
 	{
 		subIndx := hh.Index()
 		num := uint64(len(e.Transactions))
-		if num > 1048576 {
+		if num > 419430400 {
 			err = ssz.ErrIncorrectListSize
 			return
 		}
@@ -350,7 +350,7 @@ func (e *ExecutableDataDeneb) HashTreeRootWith(hh ssz.HashWalker) (err error) {
 				hh.MerkleizeWithMixin(elemIndx, byteLen, (1073741824+31)/32)
 			}
 		}
-		hh.MerkleizeWithMixin(subIndx, num, 1048576)
+		hh.MerkleizeWithMixin(subIndx, num, 419430400)
 	}
 
 	// Field (14) 'Withdrawals'

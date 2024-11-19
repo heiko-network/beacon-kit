@@ -637,13 +637,13 @@
   "consensus": {
     "params": {
       "block": {
-        "max_bytes": "4194304",
-        "max_gas": "10000000"
+        "max_bytes": "419430400",
+        "max_gas": "10000000000"
       },
       "evidence": {
         "max_age_num_blocks": "100000",
         "max_age_duration": "172800000000000",
-        "max_bytes": "1048576"
+        "max_bytes": "419430400"
       },
       "validator": {
         "pub_key_types": [

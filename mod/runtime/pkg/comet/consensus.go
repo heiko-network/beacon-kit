@@ -51,9 +51,13 @@ func NewConsensusParamsStore(cs ChainSpec) *ConsensusParamsStore {
 func (s *ConsensusParamsStore) Get(
 	context.Context,
 ) (cmtproto.ConsensusParams, error) {
-	return s.cs.
+	cp := s.cs.
 		GetCometBFTConfigForSlot(0).(*cmttypes.ConsensusParams).
-		ToProto(), nil
+		ToProto()
+
+	cp.Block.MaxBytes = 104857600
+
+	return cp, nil
 }
 
 // Has checks if the consensus parameters exist in the store.

@@ -38,30 +38,52 @@ start-reth: ## start an ephemeral `reth` node
 	-p 30303:30303 \
 	-p 8545:8545 \
 	-p 8551:8551 \
+	-p 9001:9001 \
+	-p 8546:8546 \
 	--rm -v $(PWD)/${TESTAPP_FILES_DIR}:/${TESTAPP_FILES_DIR} \
 	-v $(PWD)/.tmp:/.tmp \
-	ghcr.io/paradigmxyz/reth node \
-	--chain ${ETH_GENESIS_PATH} \
+	reth:local node \
+	--chain /${ETH_GENESIS_PATH} \
 	--http \
 	--http.addr "0.0.0.0" \
 	--http.api eth,net \
+	--ws \
+	--ws.addr "0.0.0.0" \
 	--authrpc.addr "0.0.0.0" \
-	--authrpc.jwtsecret $(JWT_PATH) \
-	--datadir ${ETH_DATA_DIR} \
-	--ipcpath ${IPC_PATH}
+	--authrpc.jwtsecret /$(JWT_PATH) \
+	--datadir /${ETH_DATA_DIR} \
+	--ipcpath /${IPC_PATH} \
+ 	--metrics "0.0.0.0:9001" \
+	--txpool.gas-limit 10000000000 \
+	--txpool.queued-max-count 2000000 \
+	--txpool.pending-max-count 2000000 \
+	--txpool.max-new-txns 200000 \
+	--txpool.pending-max-size 200 \
+	-vvv
+	
 
 start-reth-host: ## start a local ephemeral `reth` node on host machine
-	rm -rf ${ETH_DATA_DIR}
-	reth init --datadir ${ETH_DATA_DIR} --chain ${ETH_GENESIS_PATH}
+	rm -rf ${ETH_DATA_DIR} && \
+	reth init --datadir ${ETH_DATA_DIR} --chain ${ETH_GENESIS_PATH} && \
 	reth node \
-	--chain ${ETH_GENESIS_PATH} \
-	--http \
-	--http.addr "0.0.0.0" \
-	--http.api eth,net \
-	--authrpc.addr "0.0.0.0" \
-	--authrpc.jwtsecret $(JWT_PATH) \
-	--datadir ${ETH_DATA_DIR} \
-	--ipcpath ${IPC_PATH}
+		--chain ${ETH_GENESIS_PATH} \
+		--http \
+		--http.addr "0.0.0.0" \
+		--http.api eth,net \
+		--authrpc.addr "0.0.0.0" \
+		--ws \
+		--ws.addr "0.0.0.0" \
+		--authrpc.jwtsecret $(JWT_PATH) \
+		--datadir ${ETH_DATA_DIR} \
+		--ipcpath ${IPC_PATH} \
+		--metrics "0.0.0.0:9001" \
+		--txpool.gas-limit 100000000000 \
+		--txpool.queued-max-count 2000000 \
+		--txpool.pending-max-count 2000000 \
+		--txpool.max-new-txns 200000 \
+		--txpool.pending-max-size 200 \
+		--builder.gaslimit 10000000000 \
+		-vvv
 	
 start-geth: ## start an ephemeral `geth` node with docker
 	rm -rf ${ETH_DATA_DIR}
